@@ -14,7 +14,7 @@ main()
 	if [[ "$pathToBlog" ]] && [[ "$pathToBKP" ]] #check if the variable is set to something
 	then
 		
-		if [ ! -d "$pathToBKP" ]
+		if [ ! -d "$pathToBKP" || ! -w "$logfile" ]
 		then
 			mkdir -p $pathToBKP
 			if [ $? -eq 0 ]
@@ -38,6 +38,8 @@ main()
 		
 		mv $filename $pathToBKP
 		find $pathToBKP -type f -mtime +$daystodelete -exec rm -f{} \;
+	else
+		echo "Required variables not set or you do not have permissions for writing in $logfile"
 	fi
 }
 main
