@@ -4,7 +4,7 @@
 logfile="/var/log/wpbackuplog.log"
 filename="bkp_wordpress2_"$(eval date +%Y%m%d)".tar.gz"
 pathToBlog="/home/black/Downloads" # ex: /var/www/wordpress2/ 
-#pathToBKP="/tmp/bkp/" 
+pathToBKP="/tmp/bkp/" 
 daystodelete="14" # how many days to keep logs :)
 check_dir_writable()
 {
@@ -17,11 +17,11 @@ check_dir_writable()
 }
 check_var_set()
 {
-	for bar in "$@"
+	for var in "$@"
 	do
-		if [ -z ${!bar} ]
+		if [ -z ${!var} ]
 		then
-			echo "$bar variable not set -- @$(date)" | tee -a $logfile
+			echo "$var variable not set -- @$(date)" | tee -a $logfile
 			exit
 		fi
 	done
