@@ -17,7 +17,7 @@ check_dir_writable()
 }
 check_var_set()
 {
-	if [[ ! $\{$@\} ]]
+	if [ -z $"(`echo $1`)" ]
 	then
 		echo "$1 variable not set"
 		exit
