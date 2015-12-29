@@ -14,7 +14,7 @@ main()
 	if [[ "$pathToBlog" ]] && [[ "$pathToBKP" ]] #check if the variable is set to something
 	then
 		
-		if [ ! -d "$pathToBKP" || ! -w "$logfile" ]
+		if [ ! -d "$pathToBKP" ] || [ ! -w "$logfile" ]
 		then
 			mkdir -p $pathToBKP
 			if [ $? -eq 0 ]
@@ -27,7 +27,7 @@ main()
 		fi
 		
 		echo "Started backup @ $(date)">>$logfile
-		tar -zcvf $filename $pathToBlog
+		tar -zcvf "$filename" "$pathToBlog"
 		
 		if [ $? -eq 0 ]
 		then
@@ -36,7 +36,7 @@ main()
 			echo "FAIL, backup failed @ $(date)">>$logfile
 		fi
 		
-		mv $filename $pathToBKP
+		mv "$filename" "$pathToBKP"
 		find $pathToBKP -type f -mtime +$daystodelete -exec rm -f{} \;
 	else
 		echo "Required variables not set or you do not have permissions for writing in $logfile"
