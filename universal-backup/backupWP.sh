@@ -17,7 +17,7 @@ check_dir_writable()
 }
 check_var_set()
 {
-	if [[ ! $@ ]]
+	if [[ ! $\{$@\} ]]
 	then
 		echo "$1 variable not set"
 		exit
@@ -63,7 +63,7 @@ main()
 			if [ $? -eq 0 ]
 			then
 				if check_dir_writable $logfile
-				#then
+				then
 					echo "Logfile not writable, check $logfile"
 					exit
 				fi
