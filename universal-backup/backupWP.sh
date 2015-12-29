@@ -10,7 +10,7 @@ daystodelete="14" # how many days to keep logs :)
 main()
 {
 	
-	cd /tmp || exit #will exit if cant' cd into /tmp
+	cd /tmp || exit #will exit if can't cd into /tmp
 	if [[ "$pathToBlog" ]] && [[ "$pathToBKP" ]] #check if the variable is set to something
 	then
 		
