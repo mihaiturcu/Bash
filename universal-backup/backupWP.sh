@@ -14,7 +14,7 @@ main()
 	if [[ "$pathToBlog" ]] && [[ "$pathToBKP" ]] #check if the variable is set to something
 	then
 		
-		if [ ! -d "$pathToBKP" ] || [ ! -w "$logfile" ]
+		if [ ! -d "$pathToBKP" ] || [ ! -w "$logfile" ] || [ ! -w "$pathToBKP" ]
 		then
 			mkdir -p $pathToBKP
 			if [ $? -eq 0 ]
